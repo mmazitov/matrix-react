@@ -10,72 +10,62 @@ export interface Cell {
 
 export interface MatrixContextProps {
 	matrix: Cell[][];
-	increaseCell: CellOperation;
-	removeRow: RowOperation;
-	generateMatrix: MatrixGeneration;
-	resetMatrix: VoidFunction;
-	addRow: MatrixModification;
-	getNearestCells: NearestCellsOperation;
-	calculateRowSum: RowSumCalculation;
-	calculatePercentile: PercentileCalculation;
+	increaseCell: (rowIndex: number, colIndex: number) => void;
+	removeRow: (rowIndex: number) => void;
+	generateMatrix: (rows: number, cols: number) => void;
+	resetMatrix: () => void;
+	addRow: () => void;
+	getNearestCells: (cellAmount: number, x: number) => Cell[];
+	calculateRowSum: (row: Cell[]) => number;
+	calculatePercentile: (columnIndex: number) => number;
 }
 
-export type MatrixSetter = React.Dispatch<React.SetStateAction<Cell[][]>>;
+export type MatrixSetterProps = React.Dispatch<React.SetStateAction<Cell[][]>>;
 
-export interface MatrixOperationProps {
-	setMatrix: MatrixSetter;
-}
-
-export interface RowOperationProps extends MatrixOperationProps {
+export interface RemoveRowOperationProps {
+	setMatrix: MatrixSetterProps;
 	rowIndex: number;
 }
 
-export interface AddRowProps extends MatrixOperationProps {
+export interface AddRowOperationProps {
+	setMatrix: MatrixSetterProps;
 	matrix: Cell[][];
 }
 
-export interface CellOperationProps extends MatrixOperationProps {
+export interface IncreaseCellOperationProps {
+	setMatrix: MatrixSetterProps;
 	rowIndex: number;
 	colIndex: number;
 }
 
-export interface NearestCellsOperationProps {
+export interface NearestCellsProps {
 	matrix: Cell[][];
 	cellAmount: number;
 	x: number;
 }
 
-export interface PercentileCalculationProps {
+export interface CalculatePercentileProps {
 	matrix: Cell[][];
 	columnIndex: number;
 }
 
-export interface RowSumCalculationProps {
+export interface CalculateRowSumProps {
 	row: Cell[];
 }
 
-export interface HeatmapComponentProps {
+export interface HeatmapProps {
 	row: Cell[];
 	rowSum: number;
 	rowIndex: number;
-	increaseCell: CellOperation;
+	increaseCell: (rowIndex: number, colIndex: number) => void;
 	onCellHover: (cell: Cell) => void;
-	onCellLeave: VoidFunction;
-	highlightedCells: CellId[];
-	hoveredCellId: CellId | null;
+	onCellLeave: () => void;
+	highlightedCells: number[];
+	hoveredCellId: number | null;
 }
 
-export interface CellComponentProps {
+export interface CellProps {
 	cell: Cell;
 	rowIndex: number;
 	colIndex: number;
 }
-
-// Function Types
-export type CellOperation = (rowIndex: number, colIndex: number) => void;
-export type RowOperation = (rowIndex: number) => void;
-export type MatrixGeneration = (rows: number, cols: number) => void;
-export type MatrixModification = () => void;
-export type NearestCellsOperation = (cellAmount: number, x: number) => Cell[];
-export type RowSumCalculation = (row: Cell[]) => number;
-export type PercentileCalculation = (columnIndex: number) => number;
