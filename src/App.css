@@ -1,0 +1,40 @@
+.table-matrix {
+	border: 1px solid #dae0eb;
+	border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.table-header {
+	background: #f5f6fa;
+}
+
+.table-header th,
+.table-body td,
+.table-footer td  {
+	padding: 4px 8px;
+	border: 1px solid #dae0eb;
+	text-align: left;
+}
+
+.table-body td {
+	transition: background-color 0.3s ease-in-out;
+}
+
+.form-matrix {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 15px;
+}
+
+.form-row {
+	display: flex;
+	align-items: end;
+	gap: 15px;
+}
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+}
+
