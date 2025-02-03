@@ -1,4 +1,3 @@
-// /home/mykola/Desktop/edu/js/react/matrix/src/actions/matrixGenerate.tsx
 import { Cell, MatrixProps, MatrixSetterProps } from '../types/matrix';
 
 // Function to generate a new matrix.
